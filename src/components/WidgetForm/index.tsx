@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-import { CloseButton } from "./CloseButton";
+import { CloseButton } from "../CloseButton";
 
-import bugImageUrl from '../assets/bug.svg';
-import ideaImageUrl from '../assets/idea.svg';
-import thoughtImageUrl from '../assets/thought.svg';
+import bugImageUrl from '../../assets/bug.svg';
+import ideaImageUrl from '../../assets/idea.svg';
+import thoughtImageUrl from '../../assets/thought.svg';
+import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
 
-const feedbackTypes = {
+export const feedbackTypes = {
   BUG: {
     title: "Problema",
     image: {
@@ -30,10 +31,9 @@ const feedbackTypes = {
   }
 }
 
-type FeedbackType = keyof typeof feedbackTypes;
+export type FeedbackType = keyof typeof feedbackTypes;
 
 export function WidgetForm() {
-
   const [feedBackType, setFeedBackType] = useState<null | FeedbackType>(null);
 
   return (
@@ -42,26 +42,11 @@ export function WidgetForm() {
         <span className="text-xl leading-6">Deixe seu feedback</span>
         <CloseButton />
       </header>
-
       {!feedBackType ? (
-        <div className="flex py-8 gap-2 w-full">
-          {Object.entries(feedbackTypes).map(([key, value]) => (
-            <button
-              key={key}
-              className="bg-zinc-800 w-24 py-5 rounded-lg flex-1 flex flex-col items-center gap-2 border-2 border-transparent hover:border-brand-500 focus:border-brand-500 focus:outline-none"
-              onClick={() => setFeedBackType(key as FeedbackType)}
-            >
-              <span>{value.title}</span>
-              <img src={value.image.source} alt={value.image.alt} />
-            </button>
-          ))}
-        </div>
+        <FeedbackTypeStep onFeedbacktypeChanged={setFeedBackType} />
       ) : (
         <p>Hello World</p>
       )}
-
-
-
       <footer className="text-xs text-neutral-400">
         Feito por <a className="underline underline-offset-2" href="https://www.linkedin.com/in/lucas-fritschy/">Lucas Fritschy</a>
       </footer>
