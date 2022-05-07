@@ -37,9 +37,9 @@ export function FeedbackContentStep({ feedbackType, onRestartFeedback, onFeedbac
       })
     } catch (err) {
       console.error(err)
-    } finally {
-      setIsSendingFeedback(false)
     }
+
+    setIsSendingFeedback(false)
     onFeedbackSent()
   }
 
