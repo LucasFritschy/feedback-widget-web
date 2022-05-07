@@ -63,7 +63,8 @@ export function WidgetForm() {
         </>
       }
       <footer className="text-xs text-neutral-400">
-        Feito por <a className="underline underline-offset-2" href="https://www.linkedin.com/in/lucas-fritschy/">Lucas Fritschy</a>
+        Desenvolvido por <a className="underline underline-offset-2" href="https://www.linkedin.com/in/lucas-fritschy/">Lucas Fritschy
+        </a>
       </footer>
     </div>
   )
